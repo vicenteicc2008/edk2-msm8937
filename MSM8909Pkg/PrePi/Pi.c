@@ -27,24 +27,45 @@
 
 VOID EFIAPI ProcessLibraryConstructorList(VOID);
 
+#define PIPE_SSPP_SRC_FORMAT                    0x30
+#define PIPE_SSPP_SRC_UNPACK_PATTERN            0x34
+#define PIPE_BASE				0x1A15000
+#define PIPE_BASE1				0x1A17000
+#define PIPE_SSPP_SRC_YSTRIDE			0x24
+
+#define MDP_BASE                    (0x1A00000)
+#define REG_MDP(off)                (MDP_BASE + (off))
+#define MDP_HW_REV                              REG_MDP(0x1000)
+#define MDP_VP_0_VIG_0_BASE                     REG_MDP(0x5000)
+#define MDP_VP_0_VIG_1_BASE                     REG_MDP(0x7000)
+#define MDP_VP_0_RGB_0_BASE                     REG_MDP(0x15000)
+#define MDP_VP_0_RGB_1_BASE                     REG_MDP(0x17000)
+#define MDP_VP_0_DMA_0_BASE                     REG_MDP(0x25000)
+#define MDP_VP_0_DMA_1_BASE                     REG_MDP(0x27000)
+#define MDP_VP_0_MIXER_0_BASE                   REG_MDP(0x45000)
+#define MDP_VP_0_MIXER_1_BASE                   REG_MDP(0x46000)
+
+#define MDP_CTL_0_BASE                          0x1A02000
+#define MDP_CTL_1_BASE                          0x1A02200
+#define CTL_FLUSH				0x18
+
 STATIC VOID UartInit(VOID)
 {
   /* Clear screen at new FB address */ 
-  UINT8 *base = (UINT8 *)0x80400000ull;
-  for (UINTN i = 0; i < 0x00800000; i++) {
+  UINT8 *base = (UINT8 *)0x8dd01000ull;
+  for (UINTN i = 0; i < 0x01400000; i++) {
     base[i] = 0;
   }
 
   // Set BGR Format
-  MmioWrite32(0x1A90000, 0x418213F);
-  // Set stride
-  MmioWrite32(0x1A9000C, 4 * PcdGet32(PcdMipiFrameBufferWidth));
-  /* Move from old FB to the Windows Mobile platform one, so it fits with the UEFIplat */
-  MmioWrite32(0x1A90008,0x80400000);
+  MmioWrite32(PIPE_BASE + PIPE_SSPP_SRC_FORMAT, 0x000236FF);
+  MmioWrite32(PIPE_BASE + PIPE_SSPP_SRC_UNPACK_PATTERN, 0x03020001);
+  MmioWrite32(PIPE_BASE + PIPE_SSPP_SRC_YSTRIDE, FixedPcdGet32(PcdMipiFrameBufferWidth) * 4);
+  MmioWrite32(MDP_CTL_0_BASE + CTL_FLUSH, (1 << (3)));
 
   SerialPortInitialize();
 
-  DEBUG((EFI_D_INFO, "\nTianoCore on MSM8909 (ARM)\n"));
+  DEBUG((EFI_D_INFO, "\nTianoCore on MSM8937 (ARM)\n"));
   DEBUG(
       (EFI_D_INFO, "Firmware version %s built %a %a\n\n",
        (CHAR16 *)PcdGetPtr(PcdFirmwareVersionString), __TIME__, __DATE__));
@@ -144,8 +165,6 @@ VOID Main(IN VOID *StackBase, IN UINTN StackSize)
   Status = LoadDxeCoreFromFv(NULL, 0);
   ASSERT_EFI_ERROR(Status);
 
-  // We should never reach here
-  CpuDeadLoop();
 }
 
 VOID CEntryPoint(IN VOID *StackBase, IN UINTN StackSize)

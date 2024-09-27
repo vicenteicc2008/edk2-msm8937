@@ -43,7 +43,7 @@
 [PcdsFixedAtBuild.common]
   # Simple FrameBuffer
   gEfiMdeModulePkgTokenSpaceGuid.PcdEmuVariableNvModeEnable|TRUE|BOOLEAN|1
-  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x80400000|UINT32|0x0000a400 # 0x7C400000
+  gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferAddress|0x8dd01000|UINT32|0x0000a400 # 0x7C400000
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferWidth|480|UINT32|0x0000a401
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferHeight|854|UINT32|0x0000a402
   gMSM8909PkgTokenSpaceGuid.PcdMipiFrameBufferPixelBpp|24|UINT32|0x0000a403
@@ -53,8 +53,8 @@
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize|0x10000|UINT32|0x00000038
   gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize|0x10000|UINT32|0x00000039
  # Memory allocation
-  gMSM8909PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x3CD00000|UINT64|0x00000a106
-  gMSM8909PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x03300000|UINT32|0x00000a107
+  gMSM8909PkgTokenSpaceGuid.PcdPreAllocatedMemorySize|0x7CD00000|UINT64|0x00000a106
+  gMSM8909PkgTokenSpaceGuid.PcdUefiMemPoolSize|0x02500000|UINT32|0x00000a107
   # PON Debounce
   gQcomTokenSpaceGuid.PcdPONDebounce|0x00000000|UINT32|0x00000F09
   # QTimer

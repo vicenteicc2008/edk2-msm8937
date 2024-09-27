@@ -25,7 +25,7 @@
   BUILD_TARGETS                  = DEBUG|RELEASE
   SKUID_IDENTIFIER               = DEFAULT
   FLASH_DEFINITION               = MSM8909Pkg/MSM8909Pkg.fdf
-  DEFINE USE_SCREEN_FOR_SERIAL_OUTPUT = 0
+  DEFINE USE_SCREEN_FOR_SERIAL_OUTPUT = 1
 
 !include MSM8909Pkg/CommonDsc.dsc.inc
 
@@ -54,8 +54,6 @@
   QTimerLib|MSM8909Pkg/Library/QTimerLib/QTimerLib.inf
   InterruptsLib|MSM8909Pkg/Library/InterruptsLib/InterruptsLib.inf
   MallocLib|MSM8909Pkg/Library/MallocLib/MallocLib.inf
-  KeypadDeviceHelperLib|MSM8909Pkg/Library/KeypadDeviceHelperLib/KeypadDeviceHelperLib.inf
-  KeypadDeviceImplLib|MSM8909Pkg/Library/KeypadDeviceImplLib/KeypadDeviceImplLib.inf
   DloadUtilLib|MSM8909Pkg/Library/DloadUtilLib/DloadUtilLib.inf
   QcomPlatformClockInitLib|MSM8909Pkg/Library/QcomPlatformClockInitLib/QcomPlatformClockInitLib.inf
   QcomPlatformMmcLib|MSM8909Pkg/Library/PlatformMmcLib/QcomPlatformMmcLib.inf
@@ -314,8 +312,6 @@
   MSM8909Pkg/Drivers/GpioTlmmInterruptDxe/GpioTlmmInterruptDxe.inf
   MSM8909Pkg/Drivers/SpmiDxe/SpmiDxe.inf
   MSM8909Pkg/Drivers/Pm8x41Dxe/Pm8x41Dxe.inf
-  MSM8909Pkg/Drivers/GenericKeypadDeviceDxe/GenericKeypadDeviceDxe.inf
-  MSM8909Pkg/Drivers/KeypadDxe/KeypadDxe.inf
   MSM8909Pkg/Drivers/ClockDxe/ClockDxe.inf
   MSM8909Pkg/Drivers/SdhciMMCHSDxe/SdhciMMCHS.inf
 

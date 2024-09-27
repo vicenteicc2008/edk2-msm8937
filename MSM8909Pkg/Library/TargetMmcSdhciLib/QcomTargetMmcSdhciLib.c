@@ -7,7 +7,6 @@
 #include <Platform/iomap.h>
 #include <Platform/irqs.h>
 
-//#define FORCE_SDCARD := 1
 static uint32_t mmc_pwrctl_base[] =
 	{ MSM_SDC1_BASE, MSM_SDC2_BASE };
 

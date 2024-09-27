@@ -14,7 +14,7 @@
 
 #include <AsmMacroIoLib.h>
 #include <Library/PcdLib.h>
-#include <Arm/AArch32.h>
+#include <Chipset/ArmV7.h>
 .text
 .align 3
 
@@ -57,6 +57,29 @@ _ModuleEntryPoint:
   /* Invalidate TLB */
   bl ASM_PFX(ArmInvalidateTlb)
     
+_SetupStack:
+  // r1 contains the top of the stack (and the UEFI Memory)
+
+  // Because the 'push' instruction is equivalent to 'stmdb' (decrement before), we need to increment
+  // one to the top of the stack. We check if incrementing one does not overflow (case of DRAM at the
+  // top of the memory space)
+  adds  r9, r1, #1
+  bcs   _SetupOverflowStack
+
+_SetupAlignedStack:
+  mov   r1, r9
+  b     _GetBaseUefiMemory
+
+_SetupOverflowStack:
+  // Case memory at the top of the address space. Ensure the top of the stack is EFI_PAGE_SIZE
+  // aligned (4KB)
+  MOV32 (r9, ~EFI_PAGE_MASK & 0xFFFFFFFF)
+  and   r1, r1, r9
+
+_GetBaseUefiMemory:
+  // Calculate the Base of the UEFI Memory
+  sub   r9, r1, r4
+
 _SetupPrimaryCoreStack:
   ldr r0, _StackBase     /* Stack base arg0 */
   ldr r1, _StackSize     /* Stack size arg1 */
@@ -85,7 +108,3 @@ _PrepareArguments:
 
 _NeverReturn:
   b _NeverReturn
-
-.align 3
-dead:  
-  b dead 
