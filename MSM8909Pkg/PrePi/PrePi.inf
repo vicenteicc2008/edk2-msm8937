@@ -59,7 +59,6 @@
   gArmTokenSpaceGuid.PcdFdBaseAddress
   gArmTokenSpaceGuid.PcdFdSize
   gArmPlatformTokenSpaceGuid.PcdCPUCorePrimaryStackSize
-  gArmPlatformTokenSpaceGuid.PcdCPUCoreSecondaryStackSize
   gArmPlatformTokenSpaceGuid.PcdSystemMemoryUefiRegionSize
   gArmPlatformTokenSpaceGuid.PcdCoreCount
 

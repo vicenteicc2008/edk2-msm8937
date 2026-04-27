@@ -49,11 +49,16 @@ VOID EFIAPI ProcessLibraryConstructorList(VOID);
 #define MDP_CTL_1_BASE                          0x1A02200
 #define CTL_FLUSH				0x18
 
+#define WDT_BASE 0xB0170000
+
+#define WDT_ENABLE      (WDT_BASE + 0x004)
+#define WDT_RESET       (WDT_BASE + 0x000)
+
 STATIC VOID UartInit(VOID)
 {
   /* Clear screen at new FB address */ 
   UINT8 *base = (UINT8 *)0x8dd01000ull;
-  for (UINTN i = 0; i < 0x01400000; i++) {
+  for (UINTN i = 0; i < 0x00800000; i++) {
     base[i] = 0;
   }
 
@@ -62,7 +67,7 @@ STATIC VOID UartInit(VOID)
   MmioWrite32(PIPE_BASE + PIPE_SSPP_SRC_UNPACK_PATTERN, 0x03020001);
   MmioWrite32(PIPE_BASE + PIPE_SSPP_SRC_YSTRIDE, FixedPcdGet32(PcdMipiFrameBufferWidth) * 4);
   MmioWrite32(MDP_CTL_0_BASE + CTL_FLUSH, (1 << (3)));
-
+  
   SerialPortInitialize();
 
   DEBUG((EFI_D_INFO, "\nTianoCore on MSM8937 (ARM)\n"));

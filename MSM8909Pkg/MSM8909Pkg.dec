@@ -58,7 +58,7 @@
   # PON Debounce
   gQcomTokenSpaceGuid.PcdPONDebounce|0x00000000|UINT32|0x00000F09
   # QTimer
-  gQcomTokenSpaceGuid.PcdQTimerBase|0xF9021000|UINT64|0x00000050
+  gQcomTokenSpaceGuid.PcdQTimerBase|0x0B021000|UINT64|0x00000050
 
   # GpioTlmmDxe and GpioTlmmInterruptDxe
   gQcomTokenSpaceGuid.PcdGpioTlmmBaseAddress|0|UINT64|0x00000100
@@ -129,6 +129,9 @@
   gQcomTokenSpaceGuid.PcdMmcSdc3HdrvPullCtlOffset|0|UINT64|0x000000e8
   gQcomTokenSpaceGuid.PcdMmcSdc4HdrvPullCtlOffset|0|UINT64|0x000000e9
 
+  # Timer
+  gArmTokenSpaceGuid.PcdArmArchTimerFreqInHz|0|UINT32|0x00000a900
+  
   # Misc
   gQcomTokenSpaceGuid.PcdGicSpiStart|0|UINT64|0x00000200
 

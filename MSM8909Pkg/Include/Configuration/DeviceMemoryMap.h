@@ -82,13 +82,14 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 {0x83200000, 0x02900000, "HLOS 4",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
 {0x85B00000, 0x00800000, "TZ Apps",          AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, DEVICE},
 {0x86300000, 0x00100000, "SMEM",             AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED},
-{0x86400000, 0x07901000, "HLOS 5",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
-{0x8dd01000, 0x00800000, "Display Reserved", AddMem, MEM_RES, WRITE_THROUGH, MaxMem, WRITE_THROUGH},
-{0x8E501000, 0x01AFF000, "HLOS 6",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
-{0x90000000, 0x70000000, "HLOS 7",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+{0x8dd01000, 0x00800000, "Display Reserved", AddMem, MEM_RES, WRITE_THROUGH, Reserv, WRITE_THROUGH},
+{0x8E501000, 0x01AFF000, "HLOS 5",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+{0x90000000, 0x70000000, "HLOS 6",           AddMem,  SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+
 //------------- Other Memory Regions ------
 {0x86300000, 0x00020000, "IMEM Boot Base",   NoHob,  SYS_MEM, INITIALIZED, Conv,   DEVICE},
 {0x08600000, 0x00001000, "IMEM Cookie Base", AddDev, MMAP_IO, INITIALIZED, Conv,   DEVICE},
+
 //------------- Register Regions ----------
 {0x00001000, 0x00070000, "REG 1",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
 {0x00800000, 0x00200000, "REG 2",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
