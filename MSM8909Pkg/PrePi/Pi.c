@@ -49,11 +49,6 @@ VOID EFIAPI ProcessLibraryConstructorList(VOID);
 #define MDP_CTL_1_BASE                          0x1A02200
 #define CTL_FLUSH				0x18
 
-#define WDT_BASE 0xB0170000
-
-#define WDT_ENABLE      (WDT_BASE + 0x004)
-#define WDT_RESET       (WDT_BASE + 0x000)
-
 STATIC VOID UartInit(VOID)
 {
   /* Clear screen at new FB address */ 

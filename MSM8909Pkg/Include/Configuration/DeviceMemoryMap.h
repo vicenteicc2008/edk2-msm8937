@@ -78,16 +78,17 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 {0x80C00000, 0x00040000, "UEFI Stack",       AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
 {0x80C40000, 0x00010000, "CPU Vectors",      AddMem, SYS_MEM, SYS_MEM_CAP, BsCode, WRITE_BACK},
 {0x80C50000, 0x000B0000, "Reser. Cached 0",  AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-{0x80D00000, 0x02500000, "HLOS 3",           AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
-{0x83200000, 0x02900000, "HLOS 4",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+{0x80D00000, 0x03300000, "HLOS 3",           AddMem, SYS_MEM, SYS_MEM_CAP, BsData, WRITE_BACK},
+{0x84000000, 0x01B00000, "HLOS 4",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
 {0x85B00000, 0x00800000, "TZ Apps",          AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, DEVICE},
 {0x86300000, 0x00100000, "SMEM",             AddMem, MEM_RES, UNCACHEABLE, Reserv, UNCACHED_UNBUFFERED},
+{0x8b800000, 0x01100000, "ADSP_EFS",		 AddMem, SYS_MEM, SYS_MEM_CAP, Reserv, DEVICE},
 {0x8dd01000, 0x00800000, "Display Reserved", AddMem, MEM_RES, WRITE_THROUGH, Reserv, WRITE_THROUGH},
 {0x8E501000, 0x01AFF000, "HLOS 5",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
-{0x90000000, 0x70000000, "HLOS 6",           AddMem,  SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
+{0x90000000, 0x70000000, "HLOS 6",           AddMem, SYS_MEM, SYS_MEM_CAP, Conv,   WRITE_BACK},
 
 //------------- Other Memory Regions ------
-{0x86300000, 0x00020000, "IMEM Boot Base",   NoHob,  SYS_MEM, INITIALIZED, Conv,   DEVICE},
+{0x08600000, 0x00020000, "IMEM Boot Base",   NoHob,  SYS_MEM, INITIALIZED, Conv,   DEVICE},
 {0x08600000, 0x00001000, "IMEM Cookie Base", AddDev, MMAP_IO, INITIALIZED, Conv,   DEVICE},
 
 //------------- Register Regions ----------
@@ -99,6 +100,7 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 {0x07800000, 0x00100000, "REG 6",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
 {0x0B000000, 0x00800000, "REG 7",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
 {0x0C428000, 0x00008000, "REG 8",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
+{0x07A00000, 0x00100000, "REG 9",           AddDev, MMAP_IO,  UNCACHEABLE, MmIO,   DEVICE},
 
 //------------- Terminator for MMU ----------
 {0, 0, "Terminator", 0, 0, 0, 0, 0}
@@ -106,4 +108,3 @@ static ARM_MEMORY_REGION_DESCRIPTOR_EX gDeviceMemoryDescriptorEx[] = {
 };
 
 #endif
-

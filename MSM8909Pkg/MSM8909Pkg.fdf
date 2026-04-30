@@ -178,6 +178,8 @@ READ_LOCK_STATUS   = TRUE
 
   INF MdeModulePkg/Universal/HiiDatabaseDxe/HiiDatabaseDxe.inf
 
+  INF EmbeddedPkg/SimpleTextInOutSerial/SimpleTextInOutSerial.inf
+
   #
   # ACPI Support
   #
@@ -201,9 +203,17 @@ READ_LOCK_STATUS   = TRUE
     SECTION RAW = MSM8909Pkg/AcpiTables/FPDT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/GTDT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/MADT.aml
-    SECTION RAW = MSM8909Pkg/AcpiTables/SSDT.aml
     SECTION RAW = MSM8909Pkg/AcpiTables/TPM2.aml
     SECTION UI = "AcpiTables"
+  }
+
+  #
+  # FDT support
+  #
+  INF EmbeddedPkg/Drivers/DtPlatformDxe/DtPlatformDxe.inf
+
+  FILE FREEFORM = 25462CDA-221F-47DF-AC1D-259CFAA4E326 {
+    SECTION RAW = MSM8909Pkg/FdtBlob/msm8937-xiaomi-land.dtb
   }
 
   #

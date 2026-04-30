@@ -1,7 +1,7 @@
-Attempt to create a minimal EDK2 for some MSM8909 devices
+Attempt to create a minimal EDK2 for some MSM8937 devices
 
 ## Status
-Boots to EFI shell, eMMC is working, the memory map is from WP target, ACPI from Lumia 650.
+Boots to EFI shell, eMMC is working, the memory map is from WP target, ACPI from an unknown MSM8952 device.
 
 ## Building
 Tested on Ubuntu 22.04.
@@ -10,7 +10,7 @@ First, clone EDK2.
 
 ```
 cd ..
-git clone https://github.com/tianocore/edk2.git -b edk2-stable202405--recursive
+git clone https://github.com/tianocore/edk2.git -b edk2-stable202405 --recursive
 git clone https://github.com/tianocore/edk2-platforms.git
 ```
 
